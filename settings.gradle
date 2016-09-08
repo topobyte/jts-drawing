@@ -1,0 +1,5 @@
+include 'core', 'util', 'awt', 'batik'
+project(':core').name = 'jts-drawing-core'
+project(':util').name = 'jts-drawing-util'
+project(':awt').name = 'jts-drawing-awt'
+project(':batik').name = 'jts-drawing-batik'

@@ -1,0 +1,10 @@
+bin
+bin/*
+dist
+dist/*
+*.swp
+.classpath
+.project
+.settings
+.gradle
+build
