@@ -83,8 +83,8 @@ subprojects {
 
 project(':jts-drawing-core') {
     dependencies {
-        compile 'de.topobyte:jts-utils:0.0.8'
-        compile 'de.topobyte:chromaticity-core:0.0.1'
+        compile 'de.topobyte:jts-utils:0.0.9'
+        compile 'de.topobyte:chromaticity-core:0.0.2'
         compile 'com.vividsolutions:jts:1.13'
     }
 }
@@ -101,7 +101,7 @@ project(':jts-drawing-awt') {
         compile 'de.topobyte:jgs:0.0.1'
         compile 'de.topobyte:jts2awt:0.0.1'
         compile 'de.topobyte:awt-utils:0.0.3'
-        compile 'de.topobyte:chromaticity-awt:0.0.1'
+        compile 'de.topobyte:chromaticity-awt:0.0.2'
     }
 }
 
