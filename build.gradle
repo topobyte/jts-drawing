@@ -16,6 +16,9 @@ subprojects {
         maven {
             url 'http://mvn.topobyte.de'
         }
+        maven {
+            url 'http://mvn.slimjars.com'
+        }
         mavenCentral()
     }
 }
@@ -83,7 +86,7 @@ subprojects {
 
 project(':jts-drawing-core') {
     dependencies {
-        compile 'de.topobyte:jts-utils:0.0.9'
+        compile 'de.topobyte:jts-utils:0.1.1'
         compile 'de.topobyte:chromaticity-core:0.0.2'
         compile 'com.vividsolutions:jts:1.13'
     }
