@@ -52,6 +52,22 @@ public interface GeometryDrawer
 	public void setLineWidth(double width);
 
 	/**
+	 * Set the cap style used in future drawing operations-
+	 * 
+	 * @param cap
+	 *            the cap style to use.
+	 */
+	public void setCap(Cap cap);
+
+	/**
+	 * Set the join style used in future drawing operations-
+	 * 
+	 * @param join
+	 *            the join style to use.
+	 */
+	public void setJoin(Join join);
+
+	/**
 	 * Draw the given geometry on this surface.
 	 * 
 	 * @param g

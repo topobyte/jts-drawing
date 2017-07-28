@@ -36,8 +36,10 @@ import com.vividsolutions.jts.geom.Polygon;
 import de.topobyte.chromaticity.AwtColors;
 import de.topobyte.chromaticity.ColorCode;
 import de.topobyte.jgs.transform.CoordinateTransformer;
+import de.topobyte.jts.drawing.Cap;
 import de.topobyte.jts.drawing.DrawMode;
 import de.topobyte.jts.drawing.GeometryDrawer;
+import de.topobyte.jts.drawing.Join;
 import de.topobyte.jts2awt.Jts2Awt;
 
 /**
@@ -52,6 +54,10 @@ public abstract class GeometryDrawerGraphics implements GeometryDrawer
 
 	private Color fg = AwtColors.convert(codeFg);
 	private Color bg = AwtColors.convert(codeBg);
+
+	private double width;
+	private Cap cap = Cap.SQUARE;
+	private Join join = Join.MITER;
 
 	/**
 	 * @return the graphics objects used for drawing.
@@ -96,7 +102,55 @@ public abstract class GeometryDrawerGraphics implements GeometryDrawer
 	@Override
 	public void setLineWidth(double width)
 	{
-		getGraphics().setStroke(new BasicStroke((float) width));
+		this.width = width;
+		updateStroke();
+	}
+
+	@Override
+	public void setCap(Cap cap)
+	{
+		this.cap = cap;
+		updateStroke();
+	}
+
+	@Override
+	public void setJoin(Join join)
+	{
+		this.join = join;
+		updateStroke();
+	}
+
+	private void updateStroke()
+	{
+		int cap;
+		switch (this.cap) {
+		default:
+		case SQUARE:
+			cap = BasicStroke.CAP_SQUARE;
+			break;
+		case BUTT:
+			cap = BasicStroke.CAP_BUTT;
+			break;
+		case ROUND:
+			cap = BasicStroke.CAP_ROUND;
+			break;
+		}
+
+		int join;
+		switch (this.join) {
+		default:
+		case MITER:
+			join = BasicStroke.JOIN_MITER;
+			break;
+		case BEVEL:
+			join = BasicStroke.JOIN_BEVEL;
+			break;
+		case ROUND:
+			join = BasicStroke.JOIN_ROUND;
+			break;
+		}
+
+		getGraphics().setStroke(new BasicStroke((float) width, cap, join));
 	}
 
 	@Override

@@ -21,8 +21,10 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.simplify.DouglasPeuckerSimplifier;
 
 import de.topobyte.chromaticity.ColorCode;
+import de.topobyte.jts.drawing.Cap;
 import de.topobyte.jts.drawing.DrawMode;
 import de.topobyte.jts.drawing.GeometryDrawer;
+import de.topobyte.jts.drawing.Join;
 
 /**
  * @author Sebastian Kuerten (sebastian@topobyte.de)
@@ -75,6 +77,18 @@ public class GeometryDrawerSimplifyContainer implements GeometryDrawer
 	public void setLineWidth(double width)
 	{
 		pd.setLineWidth(width);
+	}
+
+	@Override
+	public void setCap(Cap cap)
+	{
+		pd.setCap(cap);
+	}
+
+	@Override
+	public void setJoin(Join join)
+	{
+		pd.setJoin(join);
 	}
 
 	@Override

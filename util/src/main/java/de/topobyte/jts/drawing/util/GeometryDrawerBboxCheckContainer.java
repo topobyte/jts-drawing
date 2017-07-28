@@ -28,8 +28,10 @@ import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
 import de.topobyte.chromaticity.ColorCode;
+import de.topobyte.jts.drawing.Cap;
 import de.topobyte.jts.drawing.DrawMode;
 import de.topobyte.jts.drawing.GeometryDrawer;
+import de.topobyte.jts.drawing.Join;
 import de.topobyte.jts.utils.JtsHelper;
 
 /**
@@ -116,6 +118,18 @@ public class GeometryDrawerBboxCheckContainer implements GeometryDrawer
 	public void setLineWidth(double width)
 	{
 		pd.setLineWidth(width);
+	}
+
+	@Override
+	public void setCap(Cap cap)
+	{
+		pd.setCap(cap);
+	}
+
+	@Override
+	public void setJoin(Join join)
+	{
+		pd.setJoin(join);
 	}
 
 	@Override
