@@ -111,8 +111,8 @@ public class GeometryDrawerBatik extends GeometryDrawerGraphics
 				(int) (xoff * scale), (int) (yoff * scale));
 	}
 
-	private static final class ScaleCoordinateTransformer implements
-			CoordinateTransformer
+	private static final class ScaleCoordinateTransformer
+			implements CoordinateTransformer
 	{
 
 		private CoordinateTransformer parent;

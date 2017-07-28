@@ -207,9 +207,8 @@ public abstract class GeometryDrawerGraphics implements GeometryDrawer
 	public void drawSegment(double x1, double y1, double x2, double y2)
 	{
 		setColor(fg);
-		getGraphics().draw(
-				new Line2D.Double(ct.getX(x1), ct.getY(y1), ct.getX(x2), ct
-						.getY(y2)));
+		getGraphics().draw(new Line2D.Double(ct.getX(x1), ct.getY(y1),
+				ct.getX(x2), ct.getY(y2)));
 	}
 
 	@Override
