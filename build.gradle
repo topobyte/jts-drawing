@@ -42,7 +42,7 @@ if (project.hasProperty("topobyte")) {
 }
 
 subprojects {
-    task('foo') << {
+    task('foo').doLast {
         def global = new File('info.pom');
         def local = new File(project.projectDir, 'info.pom');
 
