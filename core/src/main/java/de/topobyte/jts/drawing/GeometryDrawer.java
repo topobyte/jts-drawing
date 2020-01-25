@@ -17,7 +17,7 @@
 
 package de.topobyte.jts.drawing;
 
-import com.vividsolutions.jts.geom.Geometry;
+import org.locationtech.jts.geom.Geometry;
 
 import de.topobyte.chromaticity.ColorCode;
 
