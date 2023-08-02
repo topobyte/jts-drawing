@@ -1,5 +1,5 @@
 wrapper {
-    gradleVersion = '5.2.1'
+    gradleVersion = '7.6.1'
 }
 
 allprojects {
@@ -8,16 +8,16 @@ allprojects {
 }
 
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'maven'
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
     apply plugin: 'eclipse'
 
     repositories {
         maven {
-            url 'http://mvn.topobyte.de'
+            url 'https://mvn.topobyte.de'
         }
         maven {
-            url 'http://mvn.slimjars.com'
+            url 'https://mvn.slimjars.com'
         }
         mavenCentral()
     }
@@ -72,15 +72,18 @@ subprojects {
         pomInfo.name = pomInfoL.name
     }
 
-    afterEvaluate { project ->
-        uploadArchives {
-            repositories {
-                mavenDeployer {
-                    pom.project {
-                        name pomInfo.name
-                        description pomInfo.description
-                        url pomInfo.url
-                    }
+    java {
+        withSourcesJar()
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+                pom {
+                    name = "$pomInfo.name"
+                    description = "$pomInfo.description"
+                    url = "$pomInfo.url"
                 }
             }
         }
@@ -89,33 +92,33 @@ subprojects {
 
 project(':jts-drawing-core') {
     dependencies {
-        compile 'de.topobyte:jts-utils:0.2.0'
-        compile 'de.topobyte:chromaticity-core:0.0.2'
+        api 'de.topobyte:jts-utils:0.2.0'
+        api 'de.topobyte:chromaticity-core:0.0.2'
     }
 }
 
 project(':jts-drawing-util') {
     dependencies {
-        compile project(':jts-drawing-core')
+        api project(':jts-drawing-core')
     }
 }
 
 project(':jts-drawing-awt') {
     dependencies {
-        compile project(':jts-drawing-core')
-        compile 'de.topobyte:jgs:0.0.1'
-        compile 'de.topobyte:jts2awt:0.1.0'
-        compile 'de.topobyte:awt-utils:0.0.3'
-        compile 'de.topobyte:chromaticity-awt:0.0.2'
+        api project(':jts-drawing-core')
+        api 'de.topobyte:jgs:0.0.1'
+        api 'de.topobyte:jts2awt:0.1.0'
+        api 'de.topobyte:awt-utils:0.0.3'
+        api 'de.topobyte:chromaticity-awt:0.0.2'
     }
 }
 
 project(':jts-drawing-batik') {
     dependencies {
-        compile project(':jts-drawing-core')
-        compile project(':jts-drawing-awt')
-        compile 'de.topobyte:jgs:0.0.1'
-        compile 'org.apache.xmlgraphics:batik-svggen:1.7'
-        compile 'org.apache.xmlgraphics:batik-dom:1.7'
+        api project(':jts-drawing-core')
+        api project(':jts-drawing-awt')
+        api 'de.topobyte:jgs:0.0.1'
+        api 'org.apache.xmlgraphics:batik-svggen:1.7'
+        api 'org.apache.xmlgraphics:batik-dom:1.7'
     }
 }
